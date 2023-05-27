@@ -4,7 +4,7 @@ const DirectorSchema = new mongoose.Schema(
   {
     name: { type: String, required: true, trim: true },
     DOB: { type: String, required: false, trim: true },
-    movies: [
+    filmography: [
       {
         type: mongoose.Types.ObjectId,
         required: true,

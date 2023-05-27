@@ -2,7 +2,7 @@ const Director = require("../models/director.model");
 
 const getAllDirectors = async (req, res, next) => {
   try {
-    const directors = await Director.find().populate("movies");
+    const directors = await Director.find().populate("filmography");
     return res.status(200).json(directors);
   } catch (error) {
     return next("Directors not found", error);

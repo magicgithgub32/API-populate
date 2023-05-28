@@ -926,3 +926,157 @@ DELETE http://localhost:4001/api/v1/directors/64719a869ae5a67591389aaa
 Response: status 200
 
 "Director deleted successfully"
+
+-- Si ahora hacemos un deleteMovie:
+
+DELETE http://localhost:4001/api/v1/movies/647196599ae5a67591389a7f
+
+Status 200
+
+"Movie deleted successfully" // Raging Bull
+
+Y nos traemos todos los directores con un:
+
+GET http://localhost:4001/api/v1/directors/
+
+La película Raging Bull ya no aparece en la colección:
+
+{
+"\_id": "64719ce79ae5a67591389ab1",
+"name": "Martin Scorsese",
+"DOB": "17_11_1942",
+"filmography": [
+{
+"_id": "647195a79ae5a67591389a71",
+"title": "GoodFellas",
+"year": "1990",
+"director": "Martin Scorsese",
+"createdAt": "2023-05-27T05:31:19.905Z",
+"updatedAt": "2023-05-27T05:31:19.905Z",
+"__v": 0
+},
+{
+"_id": "647195bc9ae5a67591389a73",
+"title": "Taxi Driver",
+"year": "1976",
+"director": "Martin Scorsese",
+"createdAt": "2023-05-27T05:31:40.407Z",
+"updatedAt": "2023-05-27T05:31:40.407Z",
+"__v": 0
+},
+{
+"_id": "647195ca9ae5a67591389a75",
+"title": "Mean Streets",
+"year": "1973",
+"director": "Martin Scorsese",
+"createdAt": "2023-05-27T05:31:54.185Z",
+"updatedAt": "2023-05-27T05:31:54.185Z",
+"__v": 0
+},
+{
+"_id": "647195f69ae5a67591389a77",
+"title": "Gangs of New York",
+"year": "2002",
+"director": "Martin Scorsese",
+"createdAt": "2023-05-27T05:32:38.570Z",
+"updatedAt": "2023-05-27T05:32:38.570Z",
+"__v": 0
+},
+{
+"_id": "647196219ae5a67591389a79",
+"title": "Casino",
+"year": "1995",
+"director": "Martin Scorsese",
+"createdAt": "2023-05-27T05:33:21.803Z",
+"updatedAt": "2023-05-27T05:33:21.803Z",
+"__v": 0
+},
+{
+"_id": "6471963f9ae5a67591389a7b",
+"title": "The Color of Money",
+"year": "1986",
+"director": "Martin Scorsese",
+"createdAt": "2023-05-27T05:33:51.715Z",
+"updatedAt": "2023-05-27T05:33:51.715Z",
+"__v": 0
+},
+{
+"_id": "6471964f9ae5a67591389a7d",
+"title": "The King of Comedy",
+"year": "1982",
+"director": "Martin Scorsese",
+"createdAt": "2023-05-27T05:34:07.523Z",
+"updatedAt": "2023-05-27T05:34:07.523Z",
+"__v": 0
+}
+],
+"createdAt": "2023-05-27T06:02:15.371Z",
+"updatedAt": "2023-05-27T06:07:25.153Z",
+"\_\_v": 0
+},
+
+--- Si hacemos ahora un updateMovie:
+
+PUT http://localhost:4001/api/v1/movies/6471984b9ae5a67591389a93
+
+Body: (cambiamos el año)
+
+{
+"title": "Inglorious Basterds",
+"year": "2010",
+"director": "Quentin Tarantino"
+}
+
+Y ahora hacemos un getAllDirectors:
+
+GET http://localhost:4001/api/v1/directors/
+
+Vemos cómo el film Inglorious Basterds saldrá con el dato modificado en Quentin Tarantino:
+
+[
+{
+"\_id": "64719a869ae5a67591389aaa",
+"name": "Brian De Palma",
+...
+}
+{
+"\_id": "64719b189ae5a67591389aac",
+"name": "Stanley Kubrick",
+...
+}
+{
+"\_id": "64719ce79ae5a67591389ab1",
+"name": "Martin Scorsese",
+...
+}
+{
+"\_id": "64719eb99ae5a67591389aba",
+"name": "Francis Ford Coppola",
+...
+}
+{
+"\_id": "64719fbb9ae5a67591389abc",
+"name": "Oliver Stone",
+...
+}
+{
+"\_id": "6471a0719ae5a67591389abe",
+"name": "Quentin Tarantino",
+...
+{
+"_id": "6471984b9ae5a67591389a93",
+"title": "Inglorious Basterds",
+"year": "2010",
+"director": "Quentin Tarantino",
+"createdAt": "2023-05-27T05:42:35.108Z",
+"updatedAt": "2023-05-28T06:01:26.735Z",
+"__v": 0
+},
+...
+},
+{
+"\_id": "6471a0e69ae5a67591389ac0",
+"name": "Woody Allen",
+...
+}
+]
